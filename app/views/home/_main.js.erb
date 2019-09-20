@@ -1,138 +1,96 @@
-
-	
-		var ctx = document.getElementById('sample').getContext('2d');
-
-		function getRandomColor() {
-		  var letters = '0123456789ABCDEF';
-		  var color = '#';
-		  for (var i = 0; i < 6; i++) {
-		    color += letters[Math.floor(Math.random() * 16)];
-		  }
-		  return color;
+var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+var config = {
+	type: 'line',
+	data: {
+		labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+		datasets: [{
+			label: 'My First dataset',
+			borderColor: "#C6C22F",
+			backgroundColor: "#C6C22F",
+			data: [
+				44,
+				55,
+				20,
+				21,
+				89,
+				52,
+				33
+			],
+		}, {
+			label: 'My Second dataset',
+			borderColor: "#4DAA33",
+			backgroundColor: "#4DAA33",
+			data: [
+				24,
+				55,
+				60,
+				11,
+				89,
+				82,
+				73
+			],
+		}, {
+			label: 'My Third dataset',
+			borderColor: "#C559A5",
+			backgroundColor: "#C559A5",
+			data: [
+				41,
+				55,
+				94,
+				61,
+				81,
+				52,
+				30
+			],
+		}, {
+			label: 'My Third dataset',
+			borderColor: "#45CCB7",
+			backgroundColor: "#45CCB7",
+			data: [
+				23,77,58,43,45,75,32
+			],
+		}]
+	},
+	options: {
+		responsive: true,
+		title: {
+			display: true,
+			text: 'Chart.js Line Chart - Stacked Area'
+		},
+		tooltips: {
+			mode: 'index',
+		},
+		hover: {
+			mode: 'index'
+		},
+		scales: {
+			xAxes: [{
+				scaleLabel: {
+					display: true,
+					labelString: 'Month'
+				}
+			}],
+			yAxes: [{
+				stacked: true,
+				scaleLabel: {
+					display: true,
+					labelString: 'Value'
+				}
+			}]
 		}
+	}
+};
 
-		var options = {
-		  type: 'bubble',
-		  data: {
-		    datasets: [
-		      {
-		        label: 'John',
-		        data: [
-		          {
-		            x: 3,
-		            y: 7,
-		            r: 12
-		          }
-		        ],
-		        backgroundColor: getRandomColor(),
-		        hoverBackgroundColor: getRandomColor()
-		      },
-		      {
-		        label: 'Paul',
-		          data: [
-		            {
-		              x: 6,
-		              y: 2,
-		              r: 10
-		            }
-		          ],
-		          backgroundColor: getRandomColor(),
-		          hoverBackgroundColor: getRandomColor()
-		      },
-		      {
-		        label: 'George',
-		          data: [
-		            {
-		              x: 2,
-		              y: 6,
-		              r: 10
-		            }
-		          ],
-		          backgroundColor: getRandomColor(),
-		          hoverBackgroundColor: getRandomColor()
-		      },
-		      {
-		        label: 'Ringo',
-		          data: [
-		            {
-		              x: 5,
-		              y: 3,
-		              r: 10
-		            }
-		          ],
-		          backgroundColor: getRandomColor(),
-		          hoverBackgroundColor: getRandomColor()
-		      },
-		      {
-		        label: 'John',
-		          data: [
-		            {
-		              x: 2,
-		              y: 1,
-		              r: 10
-		            }
-		          ],
-		          backgroundColor: getRandomColor(),
-		          hoverBackgroundColor: getRandomColor()
-		      },
-		      {
-		        label: 'George',
-		          data: [
-		            {
-		              x: 1,
-		              y: 3,
-		              r: 10
-		            }
-		          ],
-		          backgroundColor: getRandomColor(),
-		          hoverBackgroundColor: getRandomColor()
-		      },
-		      {
-		        label: 'Ringo',
-		          data: [
-		            {
-		              x: 1,
-		              y: 1,
-		              r: 10
-		            }
-		          ],
-		          backgroundColor: getRandomColor(),
-		          hoverBackgroundColor: getRandomColor()
-		      },
-		      {
-		        label: 'George',
-		          data: [
-		            {
-		              x: 1,
-		              y: 2,
-		              r: 10
-		            }
-		          ],
-		          backgroundColor: getRandomColor(),
-		          hoverBackgroundColor: getRandomColor()
-		      }
-		    ]
-		  },
-		  options: {
-		    legend: {
-		      display: false
-		    },
-		    scales: {
-		      yAxes: [{
-		        scaleLabel: {
-		          display: true,
-		          labelString: 'Total Patients given till date'
-		        }
-		      }],
-		      xAxes: [{
-		        scaleLabel: {
-		          display: true,
-		          labelString: 'ratio of last 2 months moving average'
-		        },
-		      }]
-		    }
-		  }
-		}
+window.onload = function() {
+	var ctx = document.getElementById('sample').getContext('2d');
+	window.myLine = new Chart(ctx, config);
+};
 
-		// For a bubble chart
-		var myBubbleChart = new Chart(ctx, options);
+function getRandomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
